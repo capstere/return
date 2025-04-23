@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Return of the Jesp - Interaktiv Star Wars-sida</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Star Wars intro section -->
+  <section id="intro">
+    <!-- Initial phrase -->
+    <div id="intro-text">För länge sedan, i en avlägsen galax långt, långt borta...</div>
+    <!-- Crawl text container -->
+    <div class="crawl-container">
+      <p class="crawl">
+        <span>EPISOD VI</span>
+        <span>RETURN OF THE JESP</span>
+        Det är en mörk tid för rebellerna. Imperiet har 
+        slagit tillbaka och sprider fruktan genom galaxen.
+        Men en hjälte från skuggorna återvänder. Jesp, den 
+        siste kodriddaren, träder fram för att återställa 
+        friheten. Med Kraftens hjälp och trofasta vänner 
+        vid sin sida är Jesp fast besluten att besegra det 
+        onda och bringa balans till koden...
+      </p>
+    </div>
+  </section>
+
+  <!-- Main interactive content (hidden until intro is done) -->
+  <section id="main-content" style="display: none;">
+    <div id="quiz-section">
+      <h2>Star Wars-quiz</h2>
+      <p id="quiz-intro">Välj din sida för att börja äventyret:</p>
+      <!-- Lightsaber choice buttons for Jedi (blue) or Sith (red) -->
+      <button class="saber-choice" data-color="blue">Blå ljussabel</button>
+      <button class="saber-choice" data-color="red">Röd ljussabel</button>
+
+      <!-- Lightsaber element (for animation when chosen) -->
+      <div id="lightsaber" class="lightsaber">
+        <div class="hilt"></div>
+      </div>
+
+      <!-- Quiz question and options -->
+      <div id="question-container" style="display: none;">
+        <p id="question-text"></p>
+        <div id="options"></div>
+      </div>
+
+      <!-- Quiz result/output -->
+      <p id="result"></p>
+    </div>
+
+    <!-- Audio elements for background music and sound effects -->
+    <audio id="music" src="music.mp3" loop></audio>
+    <audio id="saberSound" src="lightsaber-on.wav"></audio>
+    <audio id="blasterSound" src="blaster.wav"></audio>
+
+    <!-- Spaceship image for final animation -->
+    <img id="spaceship" src="ship.png" alt="Rymdskepp" />
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
