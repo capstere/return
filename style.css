@@ -263,10 +263,14 @@ levästa */ color: #ffe81f; /* Färg */
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
+  /* display:flex;  ← ta bort den */
   align-items: flex-end;
   z-index: 2000;
-  cursor: pointer; /* klickbar */
+  cursor: pointer;
+}
+/* Visa ljussabeln först när du tar bort .hidden */
+#interactive-saber:not(.hidden) {
+  display: flex;
 }
 .saber-hilt {
   width: 20px;
