@@ -25,11 +25,8 @@ async function startSequence(){
   document.getElementById("start-text").classList.remove("hidden");
   await sleep(3000);
 
-  // 2) Logga + musik
+  // 2) Logga + musik (observera att BG-musiken redan är spelad i klick-hanteraren)
   document.querySelector("h1").classList.remove("hidden");
-  const bg = document.getElementById("bgMusic");
-  bg.muted = false;
-  bg.play().catch(()=>{});
 
   // 3) Extra fördröjning innan crawl
   await sleep(5000);
@@ -57,12 +54,18 @@ async function startSequence(){
   await sleep(5000);
   document.getElementById("final-elements").classList.remove("hidden");
 
-  // 9) Visa ljussabeln
+  // 9) Visa ljussabeln på SLUTET
   document.getElementById("interactive-saber").classList.remove("hidden");
 }
 
+// Kör countdown direkt
 updateCountdown();
+
+// Klick på start-knappen: spela musiken OMEDDELBART, sen kör enter‐sekvensen
 document.getElementById("start-button").addEventListener("click",()=>{
+  const bg = document.getElementById("bgMusic");
+  bg.play().catch(()=>{});   // play kopplat till användarklick → inga blockeringar
+  // dina befintliga hamburger-knappar
   document.querySelectorAll(".hamburger-btn").forEach(btn=>btn.addEventListener("click",()=>{
     new Audio(`assets/${btn.dataset.sound}`).play().catch(()=>{});
   }));
@@ -76,10 +79,8 @@ const saberSound = document.getElementById('saber-toggle-sound');
 // Klicka på ljussabeln för att tända/släcka
 saberEl.addEventListener('click', () => {
   const isOn = saberEl.classList.toggle('on');
-  // spela ljudet
   saberSound.currentTime = 0;
   saberSound.play().catch(() => {});
-  // om tänd, slumpa färg
   if (isOn) {
     const colors = ['blue', 'red', 'green'];
     const pick = colors[Math.floor(Math.random() * colors.length)];
