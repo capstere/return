@@ -257,45 +257,58 @@ levästa */ color: #ffe81f; /* Färg */
   /* Inner-text färg på hover */
 }
 
+.hidden { display: none; }
+
 /* --- Interaktiv ljussabel --- */
+/* 1) Startar dolt */
 #interactive-saber {
+  display: none;
   position: fixed;
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
-  /* display:flex;  ← ta bort den */
-  align-items: flex-end;
   z-index: 2000;
   cursor: pointer;
 }
-/* Visa ljussabeln först när du tar bort .hidden */
+
+/* 2) När hidden-klassen tas bort → flex-container */
 #interactive-saber:not(.hidden) {
   display: flex;
 }
+
+/* Gör handtaget till referenspunkt för bladet */
 .saber-hilt {
+  position: relative;
   width: 20px;
   height: 40px;
   background: #444;
   border: 2px solid #222;
   border-radius: 4px;
-  margin-right: 2px;
-  position: relative;
-  z-index: 1;
+  margin: 0 auto;
 }
+
+/* Bladet: absolut inuti handtaget, centrerat horisontellt */
 .saber-blade {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
   width: 8px;
-  height: 0;                /* avstängd */
-  background: #0ff;          /* default färg, blå */
+  height: 0;
+  background: #0ff;
   box-shadow: 0 0 8px #0ff, 0 0 16px #0ff;
   transition: height 0.5s ease, box-shadow 0.5s ease;
 }
+
 #interactive-saber.on .saber-blade {
-  height: 200px;            /* tänds till full längd */
+  height: 200px;
 }
+
 #interactive-saber.red .saber-blade {
   background: #f00;
   box-shadow: 0 0 8px #f00, 0 0 16px #f00;
 }
+
 #interactive-saber.green .saber-blade {
   background: #0f0;
   box-shadow: 0 0 8px #0f0, 0 0 16px #0f0;
