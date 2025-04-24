@@ -225,7 +225,7 @@ levästa */ color: #ffe81f; /* Färg */
   flex-wrap: wrap;
 }
 .hamburger-btn {
-  position: relative; padding: 30px 60px; /* Knappstorlek */
+  position: relative; padding: 24px 48px; /* Knappstorlek */
   font-size: 1.5em; /* Textstorlek i knapp */
   background: linear-gradient(145deg, #ffe81f, #ffd700);
   color: black; border: 2px solid black;
