@@ -205,56 +205,110 @@ h1 {
 }
 
 /* --- Finala element + knappar --- */
+
+/* Container för slutlig UI (titel + knappar) */
 #final-elements {
-  position: absolute;
-  top: 50%; left: 50%; transform: translate(-50%, -50%);
-  text-align: center; z-index: 1050;
-  opacity: 0; transition: opacity 5s ease-in;
-  /* 5s: fade-in för finala element */
+  position: absolute;      /* Placera relativt till närmaste positionerade förälder (här body/html) */
+  top: 50%;                /* Vertikalt 50% nerifrån */
+  left: 50%;               /* Horisontellt 50% från vänster */
+  transform: translate(-50%, -50%); /* Flytta tillbaka hälften av egen bredd/höjd för perfekt centring */
+  text-align: center;      /* Centrera text och inline-element inuti containern */
+  z-index: 1050;           /* Högre än övriga element så att denna ligger längst fram */
+  opacity: 0;              /* Startar osynlig */
+  transition: opacity 5s ease-in; /* Animera opaciteten under 5 sekunder med “ease-in” kurva */
+  /*   ↑ 5s: hur lång tid fade-in tar
+       ↑ ease-in: börjar långsamt och slutar snabbt */
 }
-#final-elements:not(.hidden) { opacity: 1; }
+/* När klassen .hidden tas bort → gör elementen synliga */
+#final-elements:not(.hidden) {
+  opacity: 1;              /* Fullt synlig */
+}
+
+/* Huvudrubrik i final-sektionen */
 #main-title {
-  font-size: 4em; /* Tit
-levästa */ color: #ffe81f; /* Färg */
+  font-size: 4em;          /* Stor text: 4 gånger standard font-size */
+  color: #ffe81f;          /* Gul färgkod (hex) */
   text-shadow: 2px 2px 8px rgba(255,232,31,0.8);
-  margin-bottom: 1em;
+                           /* Skugga: horisontellt 2px, vertikalt 2px, suddig 8px, färg med 80% opacitet */
+  margin-bottom: 1em;      /* Utrymme under rubriken, 1em motsvarar font-size */
 }
+
+/* Wrapper för knapparna */
 #buttons {
-  display: flex; justify-content: center;
-  align-items: center; gap: 32px; /* Avstånd mellan knappar */
-  flex-wrap: wrap;
+  display: flex;           /* Flexbox—rad-baserad layout */
+  justify-content: center; /* Centrera flex-items horisontellt */
+  align-items: center;     /* Centrera flex-items vertikalt */
+  gap: 32px;               /* 32px avstånd mellan varje knapp */
+  flex-wrap: wrap;         /* Radbryt om de inte får plats på en rad */
 }
+
+/* Själva knapparna */
 .hamburger-btn {
-  position: relative; padding: 24px 48px; /* Knappstorlek */
-  font-size: 1.5em; /* Textstorlek i knapp */
+  position: relative;      /* Gör att absoluta barn-positioner relaterar hit */
+  padding: 32px 64px;      /* Inre marginal: 24px upp/ner, 48px vänster/höger */
+  font-size: 2em;        /* Textstorlek: 1.5 gånger standard */
+  min-width: 100px;         /* se till att texten alltid får plats */
   background: linear-gradient(145deg, #ffe81f, #ffd700);
-  color: black; border: 2px solid black;
-  border-radius: 8px; text-transform: uppercase;
-  cursor: pointer; overflow: hidden;
-  transition: transform 0.2s ease;
+                           /* Bakgrundsgradient: 145° vinkel, från ljusgul till mörkgul */
+  color: black;            /* Textfärg */
+  border: 2px solid black; /* 2px svart kant runt knappen */
+  border-radius: 8px;      /* Rundade hörn med radie 8px */
+  text-transform: uppercase; /* Omvandla all text till versaler */
+  cursor: pointer;         /* Ändra muspekare till hand när man hovrar */
+  overflow: hidden;        /* Dölj allt som hamnar utanför knappens box */
+  transition:     transform 0.2s ease, box-shadow 0.3s ease, text-shadow 0.3s ease;
+                           /* TA BORT BOX och TEXT ease EVENTUELLT. Animera transform (t.ex. scale) under 0.2s med ease-kurva */
+  /* Lätt glow som grundläge */
+  box-shadow:
+    0 0 6px rgba(255,232,31,0.6),
+    0 0 12px rgba(255,206,0,0.4);
+  
 }
+
+/* Text-elementen inuti knappen, absolut placerade */
 .hamburger-btn span {
-  position: absolute; top: 50%; left: 50%;
+  position: absolute;      /* Placeras i förhållande till .hamburger-btn */
+  top: 50%;                /* Vertikalt mitt i knappen */
+  left: 50%;               /* Horisontellt mitt i knappen */
   transform: translate(-50%, -50%);
-  white-space: nowrap;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+                           /* Flytta tillbaka hälften av egen bredd/höjd för centring */
+  white-space: nowrap;     /* Förhindra radbrytning */
+  transition:
+    transform 0.5s ease,  /* Animera position/förflyttning under 0.5s */
+    opacity 0.5s ease;    /* Animera opacitet under 0.5s */
 }
+
+/* Speciell styling för tredje textspans (som är dold initialt) */
 .hamburger-btn span:nth-child(3) {
   transform: translate(-50%, -50%) scaleY(0);
-  opacity: 0; font-size: 1em; font-weight: 700;
-  color: #ffe81f;
+                           /* Skala Y till 0 → osynlig i vertikalled */
+  opacity: 0;              /* Fullt genomskinlig initialt */
+  font-size: 1em;          /* Mindre textstorlek för detta lager */
+  font-weight: 700;        /* Fet stil */
+  color: #ffe81f;          /* Gul färg för inre text */
   text-shadow: 2px 2px 8px rgba(255,232,31,0.8);
+                           /* Samma skugga som #main-title för konsekvent look */
 }
+
+/* När man hovrar över knappen: flytta upp övre text (span 1) */
 .hamburger-btn:hover span:nth-child(1) {
   transform: translate(-50%, calc(-50% - 0.8em));
+                           /* Flytta 0.8em högre upp än centrum */
 }
+
+/* Hover: flytta ner mellan-texten (span 2) */
 .hamburger-btn:hover span:nth-child(2) {
   transform: translate(-50%, calc(-50% + 0.8em));
+                           /* Flytta 0.8em lägre än centrum */
 }
+
+/* Hover: visa tredje texten genom att skala upp och öka opacitet */
 .hamburger-btn:hover span:nth-child(3) {
   transform: translate(-50%, -50%) scaleY(1);
-  opacity: 1; color: black;
-  /* Inner-text färg på hover */
+                           /* Återställ vertikal skala till normal (1) */
+  opacity: 1;              /* Gör texten synlig */
+  color: black;            /* Ändra inre textens färg till svart vid hover */
+  /* Inre text syns nu med samma positioneringslogik som övriga spans */
 }
 
 .hidden { display: none; }
