@@ -265,6 +265,61 @@ h1 {
   
 }
 
+/* --- Finala element + knappar --- */
+
+/* Container för slutlig UI (titel + knappar) */
+#final-elements {
+  position: absolute;      /* Placera relativt till närmaste positionerade förälder (här body/html) */
+  top: 50%;                /* Vertikalt 50% nerifrån */
+  left: 50%;               /* Horisontellt 50% från vänster */
+  transform: translate(-50%, -50%); /* Flytta tillbaka hälften av egen bredd/höjd för perfekt centring */
+  text-align: center;      /* Centrera text och inline-element inuti containern */
+  z-index: 1050;           /* Högre än övriga element så att denna ligger längst fram */
+  opacity: 0;              /* Startar osynlig */
+  transition: opacity 5s ease-in; /* Animera opaciteten under 5 sekunder med “ease-in” kurva */
+  /*   ↑ 5s: hur lång tid fade-in tar
+       ↑ ease-in: börjar långsamt och slutar snabbt */
+}
+/* När klassen .hidden tas bort → gör elementen synliga */
+#final-elements:not(.hidden) {
+  opacity: 1;              /* Fullt synlig */
+}
+
+/* Huvudrubrik i final-sektionen */
+#main-title {
+  font-size: 4em;          /* Stor text: 4 gånger standard font-size */
+  color: #ffe81f;          /* Gul färgkod (hex) */
+  text-shadow: 2px 2px 8px rgba(255,232,31,0.8);
+                           /* Skugga: horisontellt 2px, vertikalt 2px, suddig 8px, färg med 80% opacitet */
+  margin-bottom: 1em;      /* Utrymme under rubriken, 1em motsvarar font-size */
+}
+
+/* Wrapper för knapparna */
+#buttons {
+  display: flex;           /* Flexbox—rad-baserad layout */
+  justify-content: center; /* Centrera flex-items horisontellt */
+  align-items: center;     /* Centrera flex-items vertikalt */
+  gap: 32px;               /* 32px avstånd mellan varje knapp */
+  flex-wrap: wrap;         /* Radbryt om de inte får plats på en rad */
+}
+
+/* Själva knapparna */
+.hamburger-btn {
+  position: relative;      /* Gör att absoluta barn-positioner relaterar hit */
+  padding: 24px 48px;      /* Inre marginal: 24px upp/ner, 48px vänster/höger */
+  font-size: 1.5em;        /* Textstorlek: 1.5 gånger standard */
+  background: linear-gradient(145deg, #ffe81f, #ffd700);
+                           /* Bakgrundsgradient: 145° vinkel, från ljusgul till mörkgul */
+  color: black;            /* Textfärg */
+  border: 2px solid black; /* 2px svart kant runt knappen */
+  border-radius: 8px;      /* Rundade hörn med radie 8px */
+  text-transform: uppercase; /* Omvandla all text till versaler */
+  cursor: pointer;         /* Ändra muspekare till hand när man hovrar */
+  overflow: hidden;        /* Dölj allt som hamnar utanför knappens box */
+  transition: transform 0.2s ease;
+                           /* Animera transform (t.ex. scale) under 0.2s med ease-kurva */
+}
+
 /* Text-elementen inuti knappen, absolut placerade */
 .hamburger-btn span {
   position: absolute;      /* Placeras i förhållande till .hamburger-btn */
