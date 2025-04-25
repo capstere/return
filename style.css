@@ -405,9 +405,8 @@ levästa */ color: #ffe81f; /* Färg */
   to   { background: rgba(0,0,0,0.8); }
 }
 
-
 /* ===== Mobil (portrait) upp till 480px ===== */
-@media screen and (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   /* 1) Intro-text */
   #start-text {
     width: auto;
@@ -431,11 +430,9 @@ levästa */ color: #ffe81f; /* Färg */
     height: 35em;
     font-size: 150%;
     left: 50% !important;
-    margin-left: -7em !important; /* halva 14em */
+    margin-left: -7em !important;
     transform: translateX(0) perspective(300px) rotateX(25deg) !important;
   }
-
-  /* 4) Planetbild */
 
 
   /* 5) Huvudtitel i finalen */
@@ -443,20 +440,20 @@ levästa */ color: #ffe81f; /* Färg */
     font-size: 2em;
   }
 
-  /* 6) Startknapp: mindre på mobil */
+  /* 6) Startknapp – mindre */
   #start-button {
     font-size: 1em;
     padding: 10px 20px;
     max-width: 90%;
   }
 
-  /* 7) Nedräknare: mindre box */
+  /* 7) Nedräknare – mindre */
   #countdown {
     font-size: 1.2rem;
     padding: 4px 8px;
   }
 
-  /* 8) Knappar: radlayout utan wrap */
+  /* 8) Knapp-wrapper: rad utan wrap */
   #buttons {
     display: flex;
     flex-direction: row;
@@ -470,39 +467,35 @@ levästa */ color: #ffe81f; /* Färg */
     margin: 0 auto;
   }
 
-  /* 9) Varje knapp som flex-kort med bokstav+ord */
+  /* 9) Gör varje knapp till litet kort med två spans */
   .hamburger-btn {
-    flex: 1 1 auto;            /* dela radbredd jämt */
-    min-width: 0;              /* tillåt krympning */
-    max-width: 25%;            /* högst 25% bredd */
-    padding: 8px 4px;          /* mindre padding */
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 25%;
+    padding: 8px 4px;
     display: flex;
-    flex-direction: column;    /* stapla spans lodrätt */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
   }
 
-  /* 10) Spans: statisk, blockvisning, ingen överlapp */
-  .hamburger-btn span {
-    position: static !important;
-    transform: none !important;
-    display: block;            /* var och en på egen rad */
-    white-space: normal;
-    opacity: 1 !important;
-    margin: 2px 0;
-  }
+  /* 10) Nollställ gamla spans */
+  .hamburger-btn span { all: unset; }
 
-  /* 11) Anpassa fontstorlekar per span */
-  .hamburger-btn span:nth-child(1),
-  .hamburger-btn span:nth-child(2) {
-    font-size: 1.2em;          /* bokstavs‐size */
+  /* 11) Letter + label via nya klasser */
+  .hamburger-btn .mobile-letter {
+    display: block;
+    font-size: 1.5em;
     line-height: 1;
+    color: black;
   }
-  .hamburger-btn span:nth-child(3) {
-    font-size: 0.9em;          /* ord‐storlek */
-    line-height: 1.1;
+  .hamburger-btn .mobile-label {
+    display: block;
+    font-size: 0.9em;
+    line-height: 1.2;
+    color: black;
     margin-top: 4px;
-    padding: 0 2px;
+    white-space: normal;
   }
 }
