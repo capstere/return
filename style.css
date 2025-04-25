@@ -408,7 +408,7 @@ levästa */ color: #ffe81f; /* Färg */
 
 /* ===== Mobil (portrait) upp till 480px ===== */
 @media screen and (max-width: 480px) {
-  /* 1) Intro-text: två rader via ditt <br> */
+  /* 1) Intro-text */
   #start-text {
     width: auto;
     max-width: 12em;
@@ -435,65 +435,74 @@ levästa */ color: #ffe81f; /* Färg */
     transform: translateX(0) perspective(300px) rotateX(25deg) !important;
   }
 
-  /* 4) Planetbild (valfritt) */
+  /* 4) Planetbild */
+
 
   /* 5) Huvudtitel i finalen */
   #main-title {
     font-size: 2em;
   }
 
-  /* 6) Knappar: radlayout utan wrap, rätt fördelning */
-  #buttons {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    gap: 8px;
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  /* 7) Varje knapp blir en liten kort-flexbox med sina tre spans lodrätt */
-  .hamburger-btn {
-    flex: 1 1 auto;            /* dela radbredd jämt */
-    min-width: 0;              /* tillåt krympning */
-    padding: 8px 4px;          /* mindre padding horisontellt */
-    display: flex;             /* gör knappen till flexcontainer */
-    flex-direction: column;    /* stapla spans lodrätt */
-    align-items: center;       /* centrera spans horisontellt */
-    justify-content: center;   /* centrera spans vertikalt */
-    text-align: center;        /* säkerställ centrerad text */
-  }
-
-  /* 8) Spans: statisk position, blockvisning, inget överlapp */
-  .hamburger-btn span {
-    position: static !important;
-    transform: none !important;
-    display: block;
-    white-space: normal;
-    opacity: 1 !important;
-    margin: 2px 0;
-  }
-
-  /* 9) Fontstorlekar per rad i knappen */
-  .hamburger-btn span:nth-child(1),
-  .hamburger-btn span:nth-child(2) {
-    font-size: 1.2em;
-  }
-  .hamburger-btn span:nth-child(3) {
-    font-size: 0.9em;
-  }
-
-  /* 10) Startknapp: mindre på mobil */
+  /* 6) Startknapp: mindre på mobil */
   #start-button {
     font-size: 1em;
     padding: 10px 20px;
     max-width: 90%;
   }
 
-  /* 11) Nedräknare: mindre box */
+  /* 7) Nedräknare: mindre box */
   #countdown {
     font-size: 1.2rem;
     padding: 4px 8px;
   }
-} /* SLUT på mobil-media */
+
+  /* 8) Knappar: radlayout utan wrap */
+  #buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 0 8px;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+
+  /* 9) Varje knapp som flex-kort med bokstav+ord */
+  .hamburger-btn {
+    flex: 1 1 auto;            /* dela radbredd jämt */
+    min-width: 0;              /* tillåt krympning */
+    max-width: 25%;            /* högst 25% bredd */
+    padding: 8px 4px;          /* mindre padding */
+    display: flex;
+    flex-direction: column;    /* stapla spans lodrätt */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* 10) Spans: statisk, blockvisning, ingen överlapp */
+  .hamburger-btn span {
+    position: static !important;
+    transform: none !important;
+    display: block;            /* var och en på egen rad */
+    white-space: normal;
+    opacity: 1 !important;
+    margin: 2px 0;
+  }
+
+  /* 11) Anpassa fontstorlekar per span */
+  .hamburger-btn span:nth-child(1),
+  .hamburger-btn span:nth-child(2) {
+    font-size: 1.2em;          /* bokstavs‐size */
+    line-height: 1;
+  }
+  .hamburger-btn span:nth-child(3) {
+    font-size: 0.9em;          /* ord‐storlek */
+    line-height: 1.1;
+    margin-top: 4px;
+    padding: 0 2px;
+  }
+}
