@@ -408,7 +408,7 @@ levästa */ color: #ffe81f; /* Färg */
 
 /* ===== Mobil (portrait) upp till 480px ===== */
 @media screen and (max-width: 480px) {
-  /* 1) Intro-text */
+  /* 1) Intro-text: två rader via ditt <br> */
   #start-text {
     width: auto;
     max-width: 12em;
@@ -416,32 +416,33 @@ levästa */ color: #ffe81f; /* Färg */
     margin: 40% auto;
     text-align: center;
     line-height: 1.3;
-    white-space: normal; /* tillåt radbryt efter <br> */
+    white-space: normal;
   }
 
-  /* SPAR WARS-logga */
+  /* 2) SPAR WARS-logga */
   h1 {
     font-size: 22em;
     -webkit-text-stroke: 6px #ff6;
   }
 
-  /* Crawl-text centrerad */
+  /* 3) Crawl-text centrerad */
   #titles {
     width: 14em;
     height: 35em;
     font-size: 150%;
-    /* Centrera: */
     left: 50% !important;
     margin-left: -7em !important; /* halva 14em */
     transform: translateX(0) perspective(300px) rotateX(25deg) !important;
   }
 
-  /* Huvudtitel i finalen */
+  /* 4) Planetbild (valfritt) */
+
+  /* 5) Huvudtitel i finalen */
   #main-title {
     font-size: 2em;
   }
 
-  /* Knapp‐wrappern behåller rad‐layout */
+  /* 6) Knappar: radlayout utan wrap, rätt fördelning */
   #buttons {
     display: flex;
     flex-direction: row;
@@ -452,48 +453,47 @@ levästa */ color: #ffe81f; /* Färg */
     margin: 0 auto;
   }
 
-  /* Gör varje knapp till en vertikal flexbox */
+  /* 7) Varje knapp blir en liten kort-flexbox med sina tre spans lodrätt */
   .hamburger-btn {
     flex: 1 1 auto;            /* dela radbredd jämt */
     min-width: 0;              /* tillåt krympning */
     padding: 8px 4px;          /* mindre padding horisontellt */
     display: flex;             /* gör knappen till flexcontainer */
     flex-direction: column;    /* stapla spans lodrätt */
-    align-items: center;       /* centrera spans */
-    justify-content: center;
+    align-items: center;       /* centrera spans horisontellt */
+    justify-content: center;   /* centrera spans vertikalt */
     text-align: center;        /* säkerställ centrerad text */
   }
 
-  /* Återställ spans till normalt flöde och block‐visning */
+  /* 8) Spans: statisk position, blockvisning, inget överlapp */
   .hamburger-btn span {
     position: static !important;
     transform: none !important;
-    display: block;            /* var och en på egen “rad” */
-    white-space: normal;       /* tillåt radbrytning vid behov */
+    display: block;
+    white-space: normal;
     opacity: 1 !important;
-    margin: 2px 0;             /* lite luft mellan raderna */
+    margin: 2px 0;
   }
 
-  /* Justera font‐storlekar om du vill */
+  /* 9) Fontstorlekar per rad i knappen */
   .hamburger-btn span:nth-child(1),
   .hamburger-btn span:nth-child(2) {
-    font-size: 1.2em;          /* bokstavs‐size */
+    font-size: 1.2em;
   }
   .hamburger-btn span:nth-child(3) {
-    font-size: 0.9em;          /* “inner-text” lite mindre */
+    font-size: 0.9em;
   }
-}
 
-  /* Startknapp mindre */
+  /* 10) Startknapp: mindre på mobil */
   #start-button {
     font-size: 1em;
     padding: 10px 20px;
     max-width: 90%;
   }
 
-  /* Countdown */
+  /* 11) Nedräknare: mindre box */
   #countdown {
     font-size: 1.2rem;
     padding: 4px 8px;
   }
-}
+} /* SLUT på mobil-media */
