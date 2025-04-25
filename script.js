@@ -88,3 +88,20 @@ saberEl.addEventListener('click', () => {
     saberEl.classList.add(pick);
   }
 });
+
+// ===== Mobil-feng-shui för knapparna =====
+function simplifyButtonsForMobile() {
+  if (window.innerWidth > 480) return;
+  document.querySelectorAll(".hamburger-btn").forEach(btn => {
+    const spans = btn.querySelectorAll("span");
+    const letter = spans[0]?.textContent || "";
+    const label  = spans[2]?.textContent || "";
+    btn.innerHTML = `
+      <span class="mobile-letter">${letter}</span>
+      <span class="mobile-label">${label}</span>
+    `;
+  });
+}
+
+window.addEventListener("load",    simplifyButtonsForMobile);
+window.addEventListener("resize",  simplifyButtonsForMobile);
