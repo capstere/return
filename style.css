@@ -447,44 +447,57 @@ levästa */ color: #ffe81f; /* Färg */
   }
 }
 
-/* Mobiltelefoner */
+
+/* ===== Mobiltelefoner ===== */
 @media (max-width: 480px) {
-  /* Intro-text */
+  /* Intro-text: två rader via HTML-br, men vi justerar boxen */
   #start-text {
     width: 10em;
     font-size: 1.2rem;
     margin: 40% auto;
+    text-align: center; /* säkerställ centrerad text */
   }
+
   /* SPAR WARS-logga */
   h1 {
     font-size: 22em;
     -webkit-text-stroke: 6px #ff6;
   }
+
   /* Crawl-text */
   #titles {
-    width: 14em;
+    width: 12em;
     height: 35em;
     font-size: 150%;
     margin-left: -6em;
   }
+
   /* Huvudtitel i finalen */
   #main-title {
     font-size: 2em;
   }
-  /* Knappar – stapla i kolumn för trängre skärm */
+
+  /* Knappar – radlayout med wrap */
   #buttons {
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row; /* behåll rad */
+    flex-wrap: wrap;     /* radbryt vid behov */
+    gap: 12px;           /* litet mellanrum */
   }
   .hamburger-btn {
-    padding: 12px 24px;
-    font-size: 1em;
+    padding: 12px 24px;  /* mindre klickyta */
+    font-size: 1em;      /* mindre text */
+    min-width: max-content; /* se till att texten alltid får plats */
   }
+
+  /* Startknapp: mindre på mobil */
+  #start-button {
+    font-size: 1.2em;
+    padding: 12px 24px;
+  }
+
   /* Nedräknare */
   #countdown {
     font-size: 1.2rem;
     padding: 4px 8px;
   }
 }
-
-
