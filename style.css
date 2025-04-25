@@ -448,14 +448,17 @@ levästa */ color: #ffe81f; /* Färg */
 }
 
 
-/* ===== Mobiltelefoner ===== */
-@media (max-width: 480px) {
-  /* Intro-text: två rader via HTML-br, men vi justerar boxen */
+/* ===== Mobil: max 480px ===== */
+@media only screen and (max-width: 480px) {
+  /* Intro-text (två rader via ditt <br>) */
   #start-text {
-    width: 10em;
+    width: auto;          /* låt text-boxen vara flexibel */
+    max-width: 12em;      /* max-bredd för texten */
     font-size: 1.2rem;
     margin: 40% auto;
-    text-align: center; /* säkerställ centrerad text */
+    text-align: center;
+    white-space: normal;  /* tillåt radbrytning efter <br> */
+    line-height: 1.3;
   }
 
   /* SPAR WARS-logga */
@@ -466,38 +469,48 @@ levästa */ color: #ffe81f; /* Färg */
 
   /* Crawl-text */
   #titles {
-    width: 12em;
+    width: 14em;
     height: 35em;
     font-size: 150%;
     margin-left: -6em;
   }
+
+  /* Planetbild eventuellt lite mindre */
+
 
   /* Huvudtitel i finalen */
   #main-title {
     font-size: 2em;
   }
 
-  /* Knappar – radlayout med wrap */
+  /* ---- Knappar: Always one row ---- */
   #buttons {
-    flex-direction: row; /* behåll rad */
-    flex-wrap: wrap;     /* radbryt vid behov */
-    gap: 12px;           /* litet mellanrum */
+    display: flex;         /* flex på nytt (för säkerhetens skull) */
+    flex-direction: row;   /* Rad, aldrig kolumn */
+    flex-wrap: nowrap;     /* Ingen wrap – alla fyra på samma rad */
+    justify-content: space-between; /* jämn fördelning */
+    gap: 8px;              /* liten mellanrum */
+    margin: 0 auto;        /* centrera gruppen */
+    max-width: 100%;       /* aldrig större än viewport */
   }
   .hamburger-btn {
-    padding: 12px 24px;  /* mindre klickyta */
-    font-size: 1em;      /* mindre text */
-    min-width: max-content; /* se till att texten alltid får plats */
+    padding: 8px 12px;     /* mindre klickyta */
+    font-size: 0.9em;      /* krymp texten lite */
+    min-width: auto;       /* tillåt att knappen krymper */
+    flex: 1;               /* gör att varje knapp tar lika mycket plats */
+    max-width: 20%;        /* max 20% av raden (4 knappar = 80%) */
   }
 
-  /* Startknapp: mindre på mobil */
+  /* Start-knapp mindre */
   #start-button {
-    font-size: 1.2em;
-    padding: 12px 24px;
+    font-size: 1em;
+    padding: 10px 20px;
+    max-width: 90%;
   }
 
-  /* Nedräknare */
+  /* Countdown */
   #countdown {
     font-size: 1.2rem;
     padding: 4px 8px;
   }
-}
+}}
