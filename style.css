@@ -419,13 +419,13 @@ levästa */ color: #ffe81f; /* Färg */
     white-space: normal; /* tillåt radbryt efter <br> */
   }
 
-  /* 2) SPAR WARS-logga */
+  /* SPAR WARS-logga */
   h1 {
     font-size: 22em;
     -webkit-text-stroke: 6px #ff6;
   }
 
-  /* 3) Crawl-text centrerad */
+  /* Crawl-text centrerad */
   #titles {
     width: 14em;
     height: 35em;
@@ -436,43 +436,62 @@ levästa */ color: #ffe81f; /* Färg */
     transform: translateX(0) perspective(300px) rotateX(25deg) !important;
   }
 
-  /* 5) Huvudtitel i finalen */
+  /* Huvudtitel i finalen */
   #main-title {
     font-size: 2em;
   }
 
-  /* 6) Knapp-layout: EN rad, flexibel bredd */
+  /* Knapp‐wrappern behåller rad‐layout */
   #buttons {
-    display: flex;           /* säkerställ flex */
-    flex-direction: row;     /* EN rad */
-    flex-wrap: nowrap;       /* ingen wrap */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: space-between;
     gap: 8px;
     width: 100%;
-    max-width: 100%;
     margin: 0 auto;
   }
+
+  /* Gör varje knapp till en vertikal flexbox */
   .hamburger-btn {
-    flex: 1 1 auto;          /* dela radbredd jämt */
-    min-width: 0;            /* tillåt krympning */
-    padding: 8px 12px;       /* mindre klickyta */
-    font-size: 0.9em;        /* lite mindre text */
-    overflow: visible;       /* visa hela innehållet */
-  }
-  .hamburger-btn span {
-    position: static !important; /* återgå till normalt flow */
-    transform: none !important;
-    white-space: normal;         /* tillåt radbryt */
+    flex: 1 1 auto;            /* dela radbredd jämt */
+    min-width: 0;              /* tillåt krympning */
+    padding: 8px 4px;          /* mindre padding horisontellt */
+    display: flex;             /* gör knappen till flexcontainer */
+    flex-direction: column;    /* stapla spans lodrätt */
+    align-items: center;       /* centrera spans */
+    justify-content: center;
+    text-align: center;        /* säkerställ centrerad text */
   }
 
-  /* 7) Startknapp mindre */
+  /* Återställ spans till normalt flöde och block‐visning */
+  .hamburger-btn span {
+    position: static !important;
+    transform: none !important;
+    display: block;            /* var och en på egen “rad” */
+    white-space: normal;       /* tillåt radbrytning vid behov */
+    opacity: 1 !important;
+    margin: 2px 0;             /* lite luft mellan raderna */
+  }
+
+  /* Justera font‐storlekar om du vill */
+  .hamburger-btn span:nth-child(1),
+  .hamburger-btn span:nth-child(2) {
+    font-size: 1.2em;          /* bokstavs‐size */
+  }
+  .hamburger-btn span:nth-child(3) {
+    font-size: 0.9em;          /* “inner-text” lite mindre */
+  }
+}
+
+  /* Startknapp mindre */
   #start-button {
     font-size: 1em;
     padding: 10px 20px;
     max-width: 90%;
   }
 
-  /* 8) Countdown */
+  /* Countdown */
   #countdown {
     font-size: 1.2rem;
     padding: 4px 8px;
