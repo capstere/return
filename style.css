@@ -447,70 +447,75 @@ levästa */ color: #ffe81f; /* Färg */
   }
 }
 
-
-/* ===== Mobil: max 480px ===== */
 @media only screen and (max-width: 480px) {
-  /* Intro-text (två rader via ditt <br>) */
+  /* --- Intro-text --- */
   #start-text {
-    width: auto;          /* låt text-boxen vara flexibel */
-    max-width: 12em;      /* max-bredd för texten */
+    width: auto;
+    max-width: 12em;
     font-size: 1.2rem;
     margin: 40% auto;
     text-align: center;
-    white-space: normal;  /* tillåt radbrytning efter <br> */
     line-height: 1.3;
   }
 
-  /* SPAR WARS-logga */
+  /* --- SPAR WARS-logga --- */
   h1 {
     font-size: 22em;
     -webkit-text-stroke: 6px #ff6;
   }
 
-  /* Crawl-text */
+  /* --- Crawl-text: centrerad --- */
   #titles {
+    /* Behåll dina befintliga dimensioner */
     width: 14em;
     height: 35em;
     font-size: 150%;
-    margin-left: -6em;
+    /* Centrera med transform istället för margin-left */
+    left: 50%;
+    margin-left: 0;
+    transform: translateX(-50%) perspective(300px) rotateX(25deg);
   }
 
-  /* Planetbild eventuellt lite mindre */
-
-
-  /* Huvudtitel i finalen */
+  /* --- Huvudtitel i finalen --- */
   #main-title {
     font-size: 2em;
   }
 
-  /* ---- Knappar: Always one row ---- */
-  #buttons {
-    display: flex;         /* flex på nytt (för säkerhetens skull) */
-    flex-direction: row;   /* Rad, aldrig kolumn */
-    flex-wrap: nowrap;     /* Ingen wrap – alla fyra på samma rad */
-    justify-content: space-between; /* jämn fördelning */
-    gap: 8px;              /* liten mellanrum */
-    margin: 0 auto;        /* centrera gruppen */
-    max-width: 100%;       /* aldrig större än viewport */
-  }
+  /* Gör så att alla spans lägger sig i följd, istället för absolut */
   .hamburger-btn {
-    padding: 8px 12px;     /* mindre klickyta */
-    font-size: 0.9em;      /* krymp texten lite */
-    min-width: auto;       /* tillåt att knappen krymper */
-    flex: 1;               /* gör att varje knapp tar lika mycket plats */
-    max-width: 20%;        /* max 20% av raden (4 knappar = 80%) */
+    display: flex;             /* flex så texten flödar horisontellt */
+    flex-direction: row;
+    align-items: center;       /* vertikal centrering */
+    justify-content: center;
+    gap: 4px;                  /* litet mellanrum mellan spans */
+    padding: 8px 12px;         /* justera vid behov */
   }
+  .hamburger-btn span {
+    position: static !important;   /* ta bort all absolut positionering */
+    transform: none !important;
+    opacity: 1 !important;         /* visa alltid */
+    display: inline-block !important;
+    white-space: normal !important;/* tillåt radbryt om det behövs */
+    margin: 0 !important;          /* nollställ mobilmarginaler */
+  }
+  /* Om du vill kan du justera storlek på den inre texten */
+  .hamburger-btn span:nth-child(3) {
+    font-size: 0.9em;    /* krymp eller förstora inner-text */
+    color: #ffe81f;      /* behåll din gula färg */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  }
+}
 
-  /* Start-knapp mindre */
+  /* --- Start-knapp: mindre --- */
   #start-button {
     font-size: 1em;
     padding: 10px 20px;
     max-width: 90%;
   }
 
-  /* Countdown */
+  /* --- Countdown --- */
   #countdown {
     font-size: 1.2rem;
     padding: 4px 8px;
   }
-}}
+}
