@@ -306,6 +306,9 @@ levästa */ color: #ffe81f; /* Färg */
   opacity: 0; font-size: 1em; font-weight: 700;
   color: #ffe81f;
   text-shadow: 2px 2px 8px rgba(255,232,31,0.8);
+  border: 2px #ffe81f; /* Lägg till en border */
+  padding: 2px; /* Lägg till lite padding för att göra border mer synlig */
+
 }
 .hamburger-btn:hover span:nth-child(1) {
   transform: translate(-50%, calc(-50% - 0.8em));
