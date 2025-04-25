@@ -291,7 +291,8 @@ levästa */ color: #ffe81f; /* Färg */
   background: linear-gradient(145deg, #ffe81f, #ffd700);
   color: black; border: 2px solid black;
   border-radius: 8px; text-transform: uppercase;
-  cursor: pointer; overflow: hidden;
+  cursor: pointer; overflow: visible;
+  min-width: max-content;
   transition: transform 0.2s ease;
 }
 .hamburger-btn span {
