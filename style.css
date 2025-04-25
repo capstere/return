@@ -457,12 +457,12 @@ levästa */ color: #ffe81f; /* Färg */
   }
   /* SPAR WARS-logga */
   h1 {
-    font-size: 20em;
+    font-size: 22em;
     -webkit-text-stroke: 6px #ff6;
   }
   /* Crawl-text */
   #titles {
-    width: 12em;
+    width: 14em;
     height: 35em;
     font-size: 150%;
     margin-left: -6em;
