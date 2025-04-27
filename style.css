@@ -407,7 +407,7 @@ levästa */ color: #ffe81f; /* Färg */
 
 /* ===== Mobil (portrait) upp till 480px ===== */
 @media only screen and (max-width: 480px) {
-  /* 1) Intro-text */
+  /* Intro-text */
   #start-text {
     width: auto;
     max-width: 12em;
@@ -418,13 +418,13 @@ levästa */ color: #ffe81f; /* Färg */
     white-space: normal;
   }
 
-  /* 2) SPAR WARS-logga */
+  /* SPAR WARS-logga */
   h1 {
     font-size: 22em;
     -webkit-text-stroke: 6px #ff6;
   }
 
-  /* 3) Crawl-text centrerad */
+  /* Crawl-text centrerad */
   #titles {
     width: 14em;
     height: 35em;
@@ -435,20 +435,30 @@ levästa */ color: #ffe81f; /* Färg */
   }
 
 
-  /* 5) Huvudtitel i finalen */
+  /* Huvudtitel i finalen */
   #main-title {
     font-size: 2em;
   }
 
-  /* 6) Startknapp – mindre */
+  /* Startknapp – mindre */
   #start-button {
     font-size: 1em;
     padding: 10px 20px;
     max-width: 90%;
   }
 
-  /* 7) Nedräknare – mindre */
+    /* Knappar – stapla i kolumn för trängre skärm */
+  #buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .hamburger-btn {
+    padding: 12px 24px;
+    font-size: 1em;
+  }
+  /* Nedräknare */
   #countdown {
     font-size: 1.2rem;
     padding: 4px 8px;
   }
+}
